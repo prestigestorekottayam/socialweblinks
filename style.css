@@ -2,16 +2,32 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background: #c62828;
+    background: linear-gradient(135deg, #d32f2f, #c62828, #7b1fa2, #6a1b9a);
+    background-size: 200% 200%;
     color: #fff;
     text-align: center;
     min-height: 100vh;
-    animation: fadeIn 1s ease-in;
+    animation: gradientBG 14s ease infinite, fadeIn 1s ease-in;
 }
 
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at top left, rgba(255,255,255,0.12), transparent 25%),
+                radial-gradient(circle at bottom right, rgba(255,255,255,0.08), transparent 20%);
+    pointer-events: none;
 }
 
 header {
@@ -40,6 +56,18 @@ header {
 
 main {
     padding: 30px 10px;
+    position: relative;
+    z-index: 1;
+}
+
+main::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(6px);
+    border-radius: 32px;
+    pointer-events: none;
 }
 
 h2 {
@@ -216,5 +244,9 @@ footer {
     .branch-name {
         font-size: 1rem;
         letter-spacing: 0.3em;
+    }
+    footer {
+        position: relative;
+        margin-top: 20px;
     }
 }
