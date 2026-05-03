@@ -32,8 +32,8 @@
     <div class="contact-popup" id="android-contact-note" role="status" hidden>
         <div class="contact-popup-content">
             <div class="contact-popup-text">
-                <p><i class="fas fa-folder-open"></i><span>If asked, tap <strong>Open</strong>.</span></p>
-                <p><i class="fas fa-address-book"></i><span>Choose <strong>Contacts</strong> and save it.</span></p>
+                <p><i class="fas fa-address-book"></i><span>If <strong>Contacts</strong> appears, choose it and save.</span></p>
+                <p><i class="fas fa-folder-open"></i><span>If asked after download, tap <strong>Open</strong>.</span></p>
                 <p><i class="fas fa-download"></i><span>If you miss it, open browser menu &gt; <strong>Downloads</strong> and tap prestige-kanjikuzhi-contact.vcf.</span></p>
             </div>
             <button type="button" class="note-close" id="android-contact-note-close" aria-label="Close contact instructions">Close</button>
@@ -47,7 +47,7 @@
     </header>
     <main>
         <div class="links">
-            <a href="tel:+919876543210" class="link phone">
+            <a href="tel:+918111953101" class="link phone">
                 <i class="fas fa-phone icon"></i>
                 <span class="text">Call Us</span>
             </a> 
@@ -83,10 +83,35 @@
         const contactNote = document.getElementById('android-contact-note');
         const contactNoteClose = document.getElementById('android-contact-note-close');
 
+        const showContactNote = () => {
+            contactNote.hidden = false;
+            contactNote.classList.add('is-visible');
+        };
+
         if (isAndroid) {
-            contactLink.addEventListener('click', () => {
-                contactNote.hidden = false;
-                contactNote.classList.add('is-visible');
+            contactLink.addEventListener('click', async (event) => {
+                event.preventDefault();
+                showContactNote();
+
+                try {
+                    const response = await fetch(contactLink.href);
+                    const contactBlob = await response.blob();
+                    const contactFile = new File([contactBlob], 'prestige-kanjikuzhi-contact.vcf', {
+                        type: 'text/vcard'
+                    });
+
+                    if (navigator.canShare && navigator.canShare({ files: [contactFile] })) {
+                        await navigator.share({
+                            files: [contactFile],
+                            title: 'Prestige store Kanjikuzhi Contact'
+                        });
+                        return;
+                    }
+                } catch (error) {
+                    console.warn('Contact share is not available, using vCard download.', error);
+                }
+
+                window.location.href = contactLink.href;
             });
 
             contactNoteClose.addEventListener('click', () => {
