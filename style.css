@@ -142,14 +142,44 @@ main::before {
 
 .android-contact-note {
     display: none;
-    margin: -4px 6px 2px;
-    color: rgba(255,255,255,0.9);
-    font-size: 0.82rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: -2px 0 2px;
+    padding: 12px 14px;
+    background: rgba(255,255,255,0.14);
+    border: 1px solid rgba(255,255,255,0.22);
+    border-radius: 14px;
+    color: rgba(255,255,255,0.94);
+    font-size: 0.84rem;
     line-height: 1.35;
+    text-align: left;
 }
 
 .android-contact-note:not([hidden]) {
-    display: block;
+    display: flex;
+}
+
+.android-contact-note p {
+    margin: 0;
+}
+
+.note-close {
+    flex: 0 0 auto;
+    padding: 8px 10px;
+    border: 0;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #111;
+    font: inherit;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.note-close:focus-visible {
+    outline: 2px solid rgba(255,255,255,0.8);
+    outline-offset: 2px;
 }
 
 .links .link:nth-of-type(1) { animation-delay: 0.1s; }

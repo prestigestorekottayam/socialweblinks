@@ -41,13 +41,14 @@
                 <i class="fas fa-phone icon"></i>
                 <span class="text">Call Us</span>
             </a> 
-            <a href="prestige-kanjikuzhi-contact.vcf" class="link contact">
+            <a href="prestige-kanjikuzhi-contact.vcf" class="link contact" id="save-contact">
                 <i class="fas fa-address-book icon"></i>
                 <span class="text">Add to Contacts</span>
             </a>
-            <p class="android-contact-note" id="android-contact-note" hidden>
-                If the contact save page does not open, open your browser menu > Downloads, tap prestige-kanjikuzhi-contact.vcf, choose Contacts, and save it.
-            </p>
+            <div class="android-contact-note" id="android-contact-note" role="status" hidden>
+                <p>If asked, tap Open. Choose Contacts and save it. If you miss the prompt, open your browser menu &gt; Downloads and tap prestige-kanjikuzhi-contact.vcf.</p>
+                <button type="button" class="note-close" id="android-contact-note-close" aria-label="Close contact instructions">Close</button>
+            </div>
             <a href="https://chat.whatsapp.com/Bkd8iHkeJa56kLOjX7maqt" class="link wa" target="_blank" rel="noreferrer noopener">
                 <i class="fab fa-whatsapp icon"></i>
                 <span class="text">WhatsApp Community</span>
@@ -69,8 +70,19 @@
     <footer>
     </footer>
     <script>
-        if (/Android/i.test(navigator.userAgent)) {
-            document.getElementById('android-contact-note').hidden = false;
+        const isAndroid = /Android/i.test(navigator.userAgent);
+        const contactLink = document.getElementById('save-contact');
+        const contactNote = document.getElementById('android-contact-note');
+        const contactNoteClose = document.getElementById('android-contact-note-close');
+
+        if (isAndroid) {
+            contactLink.addEventListener('click', () => {
+                contactNote.hidden = false;
+            });
+
+            contactNoteClose.addEventListener('click', () => {
+                contactNote.hidden = true;
+            });
         }
     </script>
 </body>
