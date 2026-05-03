@@ -274,15 +274,8 @@ main::before {
 }
 
 .map {
-    background: #ffffff;
-    color: #111;
-}
-
-.google-map-icon {
-    width: 32px;
-    height: 32px;
-    flex: 0 0 auto;
-    display: block;
+    background: #4285f4;
+    color: #ffffff;
 }
 
 .yt {
