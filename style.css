@@ -140,71 +140,84 @@ main::before {
     outline-offset: 4px;
 }
 
-.contact-popup {
+.contact-toast {
     display: none;
     position: fixed;
-    inset: 0;
+    top: 14px;
+    left: 10px;
+    right: 10px;
     z-index: 9999;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 14px 10px;
-    background: rgba(0,0,0,0.28);
-}
-
-.contact-popup.is-visible {
-    display: flex;
-}
-
-.contact-popup-content {
     width: min(440px, 100%);
-    display: flex;
+    margin: 0 auto;
     align-items: flex-start;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 12px 14px;
+    gap: 11px;
+    padding: 12px 12px 12px 13px;
     background: #ffffff;
-    border: 1px solid rgba(0,0,0,0.08);
-    border-radius: 14px;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 16px;
     color: #111;
-    font-size: 0.84rem;
+    font-size: 0.82rem;
     line-height: 1.35;
     text-align: left;
-    box-shadow: 0 18px 42px rgba(0,0,0,0.28);
+    box-shadow: 0 16px 36px rgba(0,0,0,0.26);
+    transform: translateY(-12px);
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.contact-popup-text {
-    display: grid;
-    gap: 7px;
-}
-
-.contact-popup p {
+.contact-toast.is-visible {
     display: flex;
-    align-items: flex-start;
-    gap: 8px;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.toast-icon {
+    flex: 0 0 34px;
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: rgba(130,30,104,0.11);
+    color: #821e68;
+    font-size: 1rem;
+}
+
+.toast-text {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.toast-text p {
     margin: 0;
 }
 
-.contact-popup i {
-    width: 16px;
-    margin-top: 2px;
-    color: #821e68;
-    text-align: center;
+.toast-title {
+    margin-bottom: 2px;
+    font-weight: 800;
 }
 
-.note-close {
-    flex: 0 0 auto;
-    padding: 8px 10px;
-    border: 0;
-    border-radius: 10px;
-    background: #821e68;
-    color: #ffffff;
-    font: inherit;
-    font-size: 0.78rem;
+.file-name {
     font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+.toast-close {
+    flex: 0 0 auto;
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.06);
+    color: #333;
+    font-size: 0.84rem;
     cursor: pointer;
 }
 
-.note-close:focus-visible {
+.toast-close:focus-visible {
     outline: 2px solid rgba(130,30,104,0.35);
     outline-offset: 2px;
 }

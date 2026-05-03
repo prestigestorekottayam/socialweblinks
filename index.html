@@ -29,15 +29,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="contact-popup" id="android-contact-note" role="status" hidden>
-        <div class="contact-popup-content">
-            <div class="contact-popup-text">
-                <p><i class="fas fa-folder-open"></i><span>If asked, tap <strong>Open</strong>.</span></p>
-                <p><i class="fas fa-address-book"></i><span>Choose <strong>Contacts</strong> and save it.</span></p>
-                <p><i class="fas fa-download"></i><span>If you miss it, open browser menu &gt; <strong>Downloads</strong> and tap prestige-kanjikuzhi-contact.vcf.</span></p>
-            </div>
-            <button type="button" class="note-close" id="android-contact-note-close" aria-label="Close contact instructions">Close</button>
+    <div class="contact-toast" id="android-contact-note" role="status" hidden>
+        <div class="toast-icon">
+            <i class="fas fa-address-book"></i>
         </div>
+        <div class="toast-text">
+            <p class="toast-title">Contact file downloaded</p>
+            <p>If asked, tap <strong>Open</strong> and choose <strong>Contacts</strong>. If you miss it, open browser menu &gt; <strong>Downloads</strong> and tap <span class="file-name">prestige-kanjikuzhi-contact.vcf</span>.</p>
+        </div>
+        <button type="button" class="toast-close" id="android-contact-note-close" aria-label="Close contact instructions">
+            <i class="fas fa-times"></i>
+        </button>
     </div>
     <header>
         <div class="logo">
@@ -82,14 +84,21 @@
         const contactLink = document.getElementById('save-contact');
         const contactNote = document.getElementById('android-contact-note');
         const contactNoteClose = document.getElementById('android-contact-note-close');
+        let contactNoteTimer;
 
         if (isAndroid) {
             contactLink.addEventListener('click', () => {
                 contactNote.hidden = false;
                 contactNote.classList.add('is-visible');
+                clearTimeout(contactNoteTimer);
+                contactNoteTimer = setTimeout(() => {
+                    contactNote.classList.remove('is-visible');
+                    contactNote.hidden = true;
+                }, 9000);
             });
 
             contactNoteClose.addEventListener('click', () => {
+                clearTimeout(contactNoteTimer);
                 contactNote.classList.remove('is-visible');
                 contactNote.hidden = true;
             });
