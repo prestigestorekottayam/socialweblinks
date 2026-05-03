@@ -1,10 +1,9 @@
 BEGIN:VCARD
 VERSION:3.0
-FN:Prestige store Kanjikuzhi
-ORG:Prestige Xclusive
-TITLE:Prestige store Kanjikuzhi
-TEL;TYPE=WORK,VOICE:+918111953101
-EMAIL:shellshome.kottayam@prestigesmartkitchen.com
-ADR;TYPE=WORK:;;Kottayam;Kerala;India
-NOTE:Prestige store Kanjikuzhi
+N:Kanjikuzhy;Prestige Store
+FN:Prestige Store Kanjikuzhy
+ORG:TTK Prestige
+EMAIL;TYPE=INTERNET:shellshome.kottayam@prestigesmartkitchen.com
+TEL;TYPE=voice,cell,pref:+91 8111953101
+ADR:;;Kosamattom Arcade, Kanjikuzhy;KOTTAYAM;KL;686004;India
 END:VCARD
