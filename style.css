@@ -275,14 +275,32 @@ main::before {
 
 footer {
     width: min(440px, 100%);
-    margin: 18px auto 0;
-    color: rgba(255,255,255,0.9);
-    font-size: 0.9rem;
-    line-height: 1.45;
+    margin: 16px auto 0;
+    padding: 13px 18px 14px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 20px;
+    color: rgba(255,255,255,0.92);
+    line-height: 1.4;
+    box-shadow: 0 14px 30px rgba(0,0,0,0.14);
 }
 
 footer p {
-    margin: 4px 0;
+    margin: 0;
+}
+
+.footer-greeting {
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #ffe45c;
+}
+
+.footer-message {
+    margin-top: 4px;
+    font-size: 0.95rem;
+    font-weight: 600;
 }
 
 @media (max-width: 600px) {
@@ -290,7 +308,8 @@ footer p {
         padding: 12px 8px 18px;
     }
     header,
-    main {
+    main,
+    footer {
         width: calc(100% - 16px);
     }
     header {
@@ -301,6 +320,11 @@ footer p {
         margin-top: 18px;
         padding: 22px 16px 24px;
         border-radius: 28px;
+    }
+    footer {
+        margin-top: 14px;
+        padding: 12px 14px 13px;
+        border-radius: 18px;
     }
     .branch-name {
         font-size: 1rem;
