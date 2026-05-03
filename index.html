@@ -45,10 +45,6 @@
                 <i class="fas fa-address-book icon"></i>
                 <span class="text">Add to Contacts</span>
             </a>
-            <div class="android-contact-note" id="android-contact-note" role="status" hidden>
-                <p>If asked, tap Open. Choose Contacts and save it. If you miss the prompt, open your browser menu &gt; Downloads and tap prestige-kanjikuzhi-contact.vcf.</p>
-                <button type="button" class="note-close" id="android-contact-note-close" aria-label="Close contact instructions">Close</button>
-            </div>
             <a href="https://chat.whatsapp.com/Bkd8iHkeJa56kLOjX7maqt" class="link wa" target="_blank" rel="noreferrer noopener">
                 <i class="fab fa-whatsapp icon"></i>
                 <span class="text">WhatsApp Community</span>
@@ -67,6 +63,16 @@
             </a>
         </div>
     </main>
+    <div class="contact-popup" id="android-contact-note" role="status" hidden>
+        <div class="contact-popup-content">
+            <div class="contact-popup-text">
+                <p><i class="fas fa-folder-open"></i><span>If asked, tap <strong>Open</strong>.</span></p>
+                <p><i class="fas fa-address-book"></i><span>Choose <strong>Contacts</strong> and save it.</span></p>
+                <p><i class="fas fa-download"></i><span>If you miss it, open browser menu &gt; <strong>Downloads</strong> and tap prestige-kanjikuzhi-contact.vcf.</span></p>
+            </div>
+            <button type="button" class="note-close" id="android-contact-note-close" aria-label="Close contact instructions">Close</button>
+        </div>
+    </div>
     <footer>
     </footer>
     <script>
