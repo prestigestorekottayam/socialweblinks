@@ -143,15 +143,15 @@ main::before {
 .contact-popup {
     display: none;
     position: fixed;
-    top: 14px;
-    left: 10px;
-    right: 10px;
-    z-index: 20;
+    inset: 0;
+    z-index: 9999;
+    align-items: flex-start;
     justify-content: center;
-    pointer-events: none;
+    padding: 14px 10px;
+    background: rgba(0,0,0,0.28);
 }
 
-.contact-popup:not([hidden]) {
+.contact-popup.is-visible {
     display: flex;
 }
 
@@ -170,7 +170,6 @@ main::before {
     line-height: 1.35;
     text-align: left;
     box-shadow: 0 18px 42px rgba(0,0,0,0.28);
-    pointer-events: auto;
 }
 
 .contact-popup-text {
@@ -275,7 +274,15 @@ main::before {
 }
 
 footer {
-    display: none;
+    width: min(440px, 100%);
+    margin: 18px auto 0;
+    color: rgba(255,255,255,0.9);
+    font-size: 0.9rem;
+    line-height: 1.45;
+}
+
+footer p {
+    margin: 4px 0;
 }
 
 @media (max-width: 600px) {

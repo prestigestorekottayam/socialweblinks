@@ -29,6 +29,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <div class="contact-popup" id="android-contact-note" role="status" hidden>
+        <div class="contact-popup-content">
+            <div class="contact-popup-text">
+                <p><i class="fas fa-folder-open"></i><span>If asked, tap <strong>Open</strong>.</span></p>
+                <p><i class="fas fa-address-book"></i><span>Choose <strong>Contacts</strong> and save it.</span></p>
+                <p><i class="fas fa-download"></i><span>If you miss it, open browser menu &gt; <strong>Downloads</strong> and tap prestige-kanjikuzhi-contact.vcf.</span></p>
+            </div>
+            <button type="button" class="note-close" id="android-contact-note-close" aria-label="Close contact instructions">Close</button>
+        </div>
+    </div>
     <header>
         <div class="logo">
             <img src="images/logo.png" alt="Prestige Xclusive" class="brand-logo">
@@ -63,17 +73,9 @@
             </a>
         </div>
     </main>
-    <div class="contact-popup" id="android-contact-note" role="status" hidden>
-        <div class="contact-popup-content">
-            <div class="contact-popup-text">
-                <p><i class="fas fa-folder-open"></i><span>If asked, tap <strong>Open</strong>.</span></p>
-                <p><i class="fas fa-address-book"></i><span>Choose <strong>Contacts</strong> and save it.</span></p>
-                <p><i class="fas fa-download"></i><span>If you miss it, open browser menu &gt; <strong>Downloads</strong> and tap prestige-kanjikuzhi-contact.vcf.</span></p>
-            </div>
-            <button type="button" class="note-close" id="android-contact-note-close" aria-label="Close contact instructions">Close</button>
-        </div>
-    </div>
     <footer>
+        <p>Thank you for connecting with Prestige Xclusive Kanjikuzhi.</p>
+        <p>You are a valuable customer to us.</p>
     </footer>
     <script>
         const isAndroid = /Android/i.test(navigator.userAgent);
@@ -84,9 +86,11 @@
         if (isAndroid) {
             contactLink.addEventListener('click', () => {
                 contactNote.hidden = false;
+                contactNote.classList.add('is-visible');
             });
 
             contactNoteClose.addEventListener('click', () => {
+                contactNote.classList.remove('is-visible');
                 contactNote.hidden = true;
             });
         }
