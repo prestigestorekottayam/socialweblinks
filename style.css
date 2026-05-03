@@ -131,6 +131,10 @@ main::before {
     filter: brightness(1.08);
 }
 
+.map:hover {
+    filter: brightness(1.08);
+}
+
 .yt:hover {
     filter: brightness(1.08);
 }
@@ -215,6 +219,7 @@ main::before {
 .links .link:nth-of-type(4) { animation-delay: 0.28s; }
 .links .link:nth-of-type(5) { animation-delay: 0.34s; }
 .links .link:nth-of-type(6) { animation-delay: 0.4s; }
+.links .link:nth-of-type(7) { animation-delay: 0.46s; }
 
 @keyframes floatIn {
     from {
@@ -266,6 +271,18 @@ main::before {
 .wa {
     background: #34af23;
     color: #ffffff;
+}
+
+.map {
+    background: #ffffff;
+    color: #111;
+}
+
+.google-map-icon {
+    width: 32px;
+    height: 32px;
+    flex: 0 0 auto;
+    display: block;
 }
 
 .yt {
