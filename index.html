@@ -77,9 +77,9 @@
 
             event.preventDefault();
 
-            const fallbackUrl = contactLink.href;
             const intentUrl = [
                 'intent://contacts/people/#Intent',
+                'scheme=content',
                 'action=android.intent.action.INSERT',
                 'type=vnd.android.cursor.dir/contact',
                 'S.name=Prestige%20Xclusive',
@@ -92,12 +92,6 @@
             ].join(';');
 
             window.location.href = intentUrl;
-
-            setTimeout(() => {
-                if (!document.hidden) {
-                    window.location.href = fallbackUrl;
-                }
-            }, 1200);
         });
     </script>
 </body>
