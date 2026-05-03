@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-IN" translate="no" class="notranslate">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +7,10 @@
     <meta name="keywords" content="Prestige Xclusive, Kanjikuzhi, WhatsApp, Instagram, Facebook, YouTube, vCard, contact, shopping">
     <meta name="author" content="Prestige Xclusive">
     <meta name="theme-color" content="#821e68">
+    <meta name="google" content="notranslate">
     <meta property="og:site_name" content="Prestige Xclusive">
     <meta property="og:title" content="Prestige Xclusive - Kanjikuzhi">
-    <meta property="og:description" content="🎁 Prestige Xclusive Kanjikuzhi | Connect with us on WhatsApp, Instagram, Facebook & YouTube. Shop & Save Contacts!">
+    <meta property="og:description" content="Prestige Xclusive Kanjikuzhi | Connect with us on WhatsApp, Instagram, Facebook & YouTube. Shop & Save Contacts!">
     <meta property="og:type" content="website">
     <meta property="og:image" content="images/logo.png">
     <meta property="og:image:width" content="1200">
@@ -17,7 +18,7 @@
     <meta property="og:locale" content="en_IN">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Prestige Xclusive - Kanjikuzhi">
-    <meta name="twitter:description" content="🎁 Prestige Xclusive Kanjikuzhi | Shop, Connect & Download Contact. Join our WhatsApp Community!">
+    <meta name="twitter:description" content="Prestige Xclusive Kanjikuzhi | Shop, Connect & Download Contact. Join our WhatsApp Community!">
     <meta name="twitter:image" content="images/logo.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -36,11 +37,11 @@
     </header>
     <main>
         <div class="links">
-            <!-- <a href="tel:+919876543210" class="link phone">
+            <a href="tel:+919876543210" class="link phone">
                 <i class="fas fa-phone icon"></i>
                 <span class="text">Call Us</span>
-            </a> -->
-            <a href="contact.vcf" class="link contact" download="Prestige_Xclusive_Kottayam.vcf">
+            </a> 
+            <a href="contact.vcf" class="link contact" id="save-contact" download="Prestige_Xclusive_Kottayam.vcf">
                 <i class="fas fa-address-book icon"></i>
                 <span class="text">Add to Contacts</span>
             </a>
@@ -48,15 +49,15 @@
                 <i class="fab fa-whatsapp icon"></i>
                 <span class="text">WhatsApp Community</span>
             </a>
-            <a href="https://www.instagram.com/prestige_kanjikuzhi/" class="link ig" target="_blank">
+            <a href="https://www.instagram.com/prestige_kanjikuzhi/" class="link ig" target="_blank" rel="noreferrer noopener">
                 <i class="fab fa-instagram icon"></i>
                 <span class="text">Instagram</span>
             </a>
-            <a href="https://www.facebook.com/349462188249045" class="link fb" target="_blank">
+            <a href="https://www.facebook.com/349462188249045" class="link fb" target="_blank" rel="noreferrer noopener">
                 <i class="fab fa-facebook-f icon"></i>
                 <span class="text">Facebook</span>
             </a>
-            <a href="https://www.youtube.com/@prestigexclusive-kanjikuzhy" class="link yt" target="_blank">
+            <a href="https://www.youtube.com/@prestigexclusive-kanjikuzhy" class="link yt" target="_blank" rel="noreferrer noopener">
                 <i class="fab fa-youtube icon"></i>
                 <span class="text">YouTube</span>
             </a>
@@ -64,5 +65,40 @@
     </main>
     <footer>
     </footer>
+    <script>
+        const contactLink = document.getElementById('save-contact');
+
+        contactLink.addEventListener('click', (event) => {
+            const isAndroid = /Android/i.test(navigator.userAgent);
+
+            if (!isAndroid) {
+                return;
+            }
+
+            event.preventDefault();
+
+            const fallbackUrl = contactLink.href;
+            const intentUrl = [
+                'intent://contacts/people/#Intent',
+                'action=android.intent.action.INSERT',
+                'type=vnd.android.cursor.dir/contact',
+                'S.name=Prestige%20Xclusive',
+                'S.company=Prestige%20Xclusive',
+                'S.job_title=Kanjikuzhi%20Branch',
+                'S.phone=%2B919876543210',
+                'S.email=info%40prestigexclusive.com',
+                'S.postal=Kanjikuzhi%2C%20Kottayam%2C%20Kerala%2C%20India',
+                'end'
+            ].join(';');
+
+            window.location.href = intentUrl;
+
+            setTimeout(() => {
+                if (!document.hidden) {
+                    window.location.href = fallbackUrl;
+                }
+            }, 1200);
+        });
+    </script>
 </body>
 </html>
